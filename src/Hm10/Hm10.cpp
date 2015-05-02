@@ -10,5 +10,5 @@ Hm10::Hm10(int txPin, int rxPin, int serialPort) {
 
 char* Hm10::sendTestCommand() {
     adapter->send("AT");
-    adapter->getResponse();
+    return adapter->getResponse();
 }
