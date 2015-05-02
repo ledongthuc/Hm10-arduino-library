@@ -35,3 +35,7 @@ char* Hm10Adapter::getResponse() {
 
     return receiveData;
 }
+
+Hm10Adapter::~Hm10Adapter() {
+	delete this->hm10Serial;
+}

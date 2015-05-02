@@ -8,6 +8,7 @@ class Hm10 {
     public:
         Hm10(int txPin, int rxPin);
         Hm10(int txPin, int rxPin, int serialPort);
+        ~Hm10();
         char* sendTestCommand();
 	
     private:

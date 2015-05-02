@@ -5,12 +5,18 @@
 Hm10::Hm10(int txPin, int rxPin) : Hm10(txPin, rxPin, SERIAL_PORT) {}
 
 Hm10::Hm10(int txPin, int rxPin, int serialPort) {
-    adapter = new Hm10Adapter(txPin, rxPin);
-    adapter->start(serialPort);
+    this->adapter = new Hm10Adapter(txPin, rxPin);
+    this->adapter->start(serialPort);
 }
 
 char* Hm10::sendTestCommand() {
 	TestCommand* command = new TestCommand();
-    adapter->send(command);
-    return adapter->getResponse();
+	this->adapter->send(command);
+    char* responseData = adapter->getResponse();
+    delete command;
+    return responseData;
+}
+
+Hm10::~Hm10() {
+	delete this->adapter;
 }
