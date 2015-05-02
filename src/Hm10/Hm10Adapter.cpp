@@ -1,4 +1,5 @@
 #include "Hm10Adapter.h"
+#include "ICommand.h"
 
 Hm10Adapter::Hm10Adapter(int txPin, int rxPin) {
     this->txPin = txPin;
@@ -10,7 +11,12 @@ void Hm10Adapter::start(int port) {
     this->hm10Serial->begin(port);
 }
 
-char* Hm10Adapter::send(char* requestData) {
+void Hm10Adapter::send(char* requestData) {
+    this->hm10Serial->write(requestData);
+}
+
+void Hm10Adapter::send(ICommand* command) {
+	char* requestData = command->buildRequestMessage();
     this->hm10Serial->write(requestData);
 }
 
