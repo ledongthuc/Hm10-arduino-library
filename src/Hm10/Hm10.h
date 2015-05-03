@@ -1,7 +1,7 @@
 #ifndef _Hm10_h_
 #define _Hm10_h_
 #define SERIAL_PORT 9600
-#define DELAY_BEFORE_SEND 10
+#define DELAY_BEFORE_SEND 50
 
 #include "Hm10Adapter.h"
 
