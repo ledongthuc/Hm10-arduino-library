@@ -4,6 +4,9 @@
 #include "TestCommand.h"
 #include "QueryBaudCommand.h"
 #include "SetBaudCommand.h"
+#include "QueryParityBitCommand.h"
+#include "SetParityBitCommand.h"
+
 
 Hm10::Hm10(int txPin, int rxPin) : Hm10(txPin, rxPin, SERIAL_PORT) {}
 
@@ -17,27 +20,44 @@ void Hm10::setSerialPort(int serialPort) {
 }
 
 char* Hm10::sendTestCommand() {
-	delay(DELAY_BEFORE_SEND);
 	TestCommand* command = new TestCommand();
 	this->adapter->send(command);
     delete command;
+    delay(DELAY_BEFORE_SEND);
     return adapter->getResponse();
 }
 
 char* Hm10::queryBaud() {
-	delay(DELAY_BEFORE_SEND);
 	QueryBaudCommand* command = new QueryBaudCommand();
 	this->adapter->send(command);
 	delete command;
+	delay(DELAY_BEFORE_SEND);
 	return adapter->getResponse();
 }
 
 char* Hm10::setBaud(char* baudId) {
-	delay(DELAY_BEFORE_SEND);
 	SetBaudCommand* command = new SetBaudCommand();
 	command->setBaudId(baudId);
 	this->adapter->send(command);
 	delete command;
+	delay(DELAY_BEFORE_SEND);
+	return adapter->getResponse();
+}
+
+char* Hm10::queryParityBit() {
+	QueryParityBitCommand* command = new QueryParityBitCommand();
+	this->adapter->send(command);
+	delete command;
+	delay(DELAY_BEFORE_SEND);
+	return adapter->getResponse();
+}
+
+char* Hm10::setParityBit(char* parityId) {
+	SetParityBitCommand* command = new SetParityBitCommand();
+	command->setParityId(parityId);
+	this->adapter->send(command);
+	delete command;
+	delay(DELAY_BEFORE_SEND);
 	return adapter->getResponse();
 }
 
