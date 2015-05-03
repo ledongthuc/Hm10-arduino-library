@@ -4,7 +4,7 @@
 Hm10Adapter::Hm10Adapter(int txPin, int rxPin) {
     this->txPin = txPin;
     this->rxPin = rxPin;
-    this->hm10Serial = new SoftwareSerial(rxPin, txPin);
+    this->hm10Serial = new NewSoftwareSerial(rxPin, txPin);
 }
 
 void Hm10Adapter::start(int port) {

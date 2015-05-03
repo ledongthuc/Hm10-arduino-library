@@ -1,7 +1,7 @@
 #ifndef _Hm10_Adapter_h_
 #define _Hm10_Adapter_h_
 
-#include "SoftwareSerial.h"
+#include "NewSoftwareSerial.h"
 #include "ICommand.h"
 #define BUFFER_LENGTH 1000
 
@@ -16,7 +16,7 @@ class Hm10Adapter {
     private:
         int txPin;
         int rxPin;
-    	SoftwareSerial* hm10Serial;
+    	NewSoftwareSerial* hm10Serial;
 };
 
 #endif

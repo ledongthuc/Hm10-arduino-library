@@ -6,6 +6,7 @@
 #include "SetBaudCommand.h"
 #include "QueryParityBitCommand.h"
 #include "SetParityBitCommand.h"
+#include "RenewFactorySettingCommand.h"
 
 
 Hm10::Hm10(int txPin, int rxPin) : Hm10(txPin, rxPin, SERIAL_PORT) {}
@@ -55,6 +56,14 @@ char* Hm10::queryParityBit() {
 char* Hm10::setParityBit(char* parityId) {
 	SetParityBitCommand* command = new SetParityBitCommand();
 	command->setParityId(parityId);
+	this->adapter->send(command);
+	delete command;
+	delay(DELAY_BEFORE_SEND);
+	return adapter->getResponse();
+}
+
+char* Hm10::renewFactorySetting() {
+	RenewFactorySettingCommand* command = new RenewFactorySettingCommand();
 	this->adapter->send(command);
 	delete command;
 	delay(DELAY_BEFORE_SEND);

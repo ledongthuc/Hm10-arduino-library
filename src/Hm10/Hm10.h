@@ -16,6 +16,7 @@ class Hm10 {
         char* setBaud(char* baudId);
         char* queryParityBit();
         char* setParityBit(char* parityId);
+        char* renewFactorySetting();
 	
     private:
     	Hm10Adapter* adapter;
