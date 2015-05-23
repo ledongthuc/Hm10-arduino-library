@@ -4,11 +4,11 @@
 Hm10Adapter::Hm10Adapter(int txPin, int rxPin) {
     this->txPin = txPin;
     this->rxPin = rxPin;
-    this->hm10Serial = new NewSoftwareSerial(rxPin, txPin);
+    this->hm10Serial = new CustomSoftwareSerial(rxPin, txPin);
 }
 
 void Hm10Adapter::start(int port) {
-    this->hm10Serial->begin(port);
+    this->hm10Serial->begin(port, CSERIAL_8N1);
 }
 
 void Hm10Adapter::send(char* requestData) {

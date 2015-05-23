@@ -27,5 +27,7 @@
 *.out
 *.app
 
-# IDE files
+# Project
+*.cbp
 .project
+Hm10-arduino-library.layout
