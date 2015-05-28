@@ -7,7 +7,7 @@
 #include "QueryParityBitCommand.h"
 #include "SetParityBitCommand.h"
 #include "RenewFactorySettingCommand.h"
-#include "SetServiceUUID.h"
+#include "SetServiceIdCommand.h"
 
 
 Hm10::Hm10(int txPin, int rxPin) : Hm10(txPin, rxPin, SERIAL_PORT) {}
@@ -80,7 +80,7 @@ char* Hm10::renewFactorySetting() {
 
 char* Hm10::setServiceId(char* serviceId) {
     delay(DELAY_BEFORE_SEND);
-	SetServiceUUID* command = new SetServiceUUID();
+	SetServiceIdCommand* command = new SetServiceIdCommand();
 	command->setServiceId(serviceId);
 	this->adapter->send(command);
 	delete command;

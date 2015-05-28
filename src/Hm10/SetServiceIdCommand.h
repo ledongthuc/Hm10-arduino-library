@@ -3,7 +3,7 @@
 
 #include "ICommand.h"
 
-class SetServiceUUID : public ICommand {
+class SetServiceIdCommand : public ICommand {
     public:
         char* buildRequestMessage();
         void setServiceId(char* serviceId);
