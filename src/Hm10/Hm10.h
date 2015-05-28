@@ -1,7 +1,9 @@
 #ifndef _Hm10_h_
 #define _Hm10_h_
 #define SERIAL_PORT 9600
-#define DELAY_BEFORE_SEND 50
+#define DELAY_AFTER_START_LISTENING 1000
+#define DELAY_BEFORE_SEND 500
+#define DELAY_AFTER_SEND 500
 
 #include "Hm10Adapter.h"
 
@@ -17,7 +19,8 @@ class Hm10 {
         char* queryParityBit();
         char* setParityBit(char* parityId);
         char* renewFactorySetting();
-	
+        char* setServiceId(char* serviceId);
+
     private:
     	Hm10Adapter* adapter;
 };
