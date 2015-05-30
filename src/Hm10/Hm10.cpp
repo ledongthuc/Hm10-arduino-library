@@ -8,6 +8,7 @@
 #include "SetParityBitCommand.h"
 #include "RenewFactorySettingCommand.h"
 #include "SetServiceIdCommand.h"
+#include "SetAdvertisingDataCommand.h"
 
 
 Hm10::Hm10(int txPin, int rxPin) : Hm10(txPin, rxPin, SERIAL_PORT) {}
@@ -86,6 +87,22 @@ char* Hm10::setServiceId(char* serviceId) {
 	delete command;
 	delay(DELAY_AFTER_SEND);
 	return adapter->getResponse();
+}
+
+char* Hm10::setAdvertisingDataFlag(char advertisingDataFlag) {
+    delay(DELAY_BEFORE_SEND);
+	SetAdvertisingDataCommand* command = new SetAdvertisingDataCommand();
+	command->setAdvertisingFlag(advertisingDataFlag);
+	this->adapter->send(command);
+    this->adapter->send(advertisingDataFlag);
+	delete command;
+	delay(DELAY_AFTER_SEND);
+	return adapter->getResponse();
+	//return command->buildRequestMessage();
+}
+
+char* Hm10::getResponse() {
+    return adapter->getResponse();
 }
 
 Hm10::~Hm10() {

@@ -15,6 +15,10 @@ void Hm10Adapter::send(char* requestData) {
     this->hm10Serial->write(requestData);
 }
 
+void Hm10Adapter::send(char requestData) {
+    this->hm10Serial->write(requestData);
+}
+
 void Hm10Adapter::send(ICommand* command) {
 	char* requestData = command->buildRequestMessage();
     this->hm10Serial->write(requestData);

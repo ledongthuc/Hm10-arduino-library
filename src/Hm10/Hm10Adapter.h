@@ -9,6 +9,7 @@ class Hm10Adapter {
     public:
         Hm10Adapter(int txPin, int rxPin);
         ~Hm10Adapter();
+        void send(char requestData);
         void send(char* requestData);
         void send(ICommand* command);
         char* getResponse();
