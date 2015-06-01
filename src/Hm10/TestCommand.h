@@ -5,9 +5,8 @@
 
 class TestCommand : public ICommand {
     public:
+        TestCommand();
         char* buildRequestMessage();
-    private:
-        char* message = "AT";
 };
 
 #endif

@@ -5,9 +5,8 @@
 
 class QueryBaudCommand : public ICommand {
     public:
+        QueryBaudCommand();
         char* buildRequestMessage();
-    private:
-    	char* message = "AT+BAUD?";
 };
 
 #endif

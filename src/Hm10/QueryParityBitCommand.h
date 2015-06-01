@@ -5,9 +5,8 @@
 
 class QueryParityBitCommand : public ICommand {
     public:
+        QueryParityBitCommand();
         char* buildRequestMessage();
-    private:
-    	char* message = "AT+PARI?";
 };
 
 #endif

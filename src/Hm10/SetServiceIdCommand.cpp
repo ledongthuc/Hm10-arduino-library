@@ -1,10 +1,12 @@
-
 #include "SetServiceIdCommand.h"
 #include "Utility.h"
 
+SetServiceIdCommand::SetServiceIdCommand() {
+    this->message = "AT+UUID{ServiceId}";
+}
+
 char* SetServiceIdCommand::buildRequestMessage() {
-	this->message = str_replace(this->message, "{ServiceId}", this->serviceId);
-	return this->message;
+	return str_replace(this->message, "{ServiceId}", this->serviceId);
 }
 
 void SetServiceIdCommand::setServiceId(char* serviceId) {

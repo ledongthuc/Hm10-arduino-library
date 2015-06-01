@@ -5,11 +5,11 @@
 
 class SetBaudCommand : public ICommand {
     public:
+        SetBaudCommand();
         char* buildRequestMessage();
         void setBaudId(char* baudId);
     private:
-    	char* message = "AT+BAUD{BaudId}";
-    	char* baudId = "";
+    	char* baudId;
 };
 
 #endif

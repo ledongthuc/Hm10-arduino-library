@@ -5,10 +5,8 @@
 
 class RenewFactorySettingCommand : public ICommand {
     public:
+        RenewFactorySettingCommand();
         char* buildRequestMessage();
-    private:
-        char* message = "AT+RENEW";
-        //char* message = "AT+RESET";
 };
 
 #endif

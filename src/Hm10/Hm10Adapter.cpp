@@ -40,6 +40,22 @@ char* Hm10Adapter::getResponse() {
     return receiveData;
 }
 
+int* Hm10Adapter::getResponseInt() {
+    int receiveData[BUFFER_LENGTH];
+    memset(receiveData, 0, BUFFER_LENGTH);
+    int index=0;
+
+    while(this->hm10Serial->available()) {
+        receiveData[index] = this->hm10Serial->read();
+        index++;
+        if(index >= BUFFER_LENGTH) {
+            break;
+    	}
+    }
+
+    return receiveData;
+}
+
 Hm10Adapter::~Hm10Adapter() {
 	delete this->hm10Serial;
 }

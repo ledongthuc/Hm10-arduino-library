@@ -5,11 +5,11 @@
 
 class SetServiceIdCommand : public ICommand {
     public:
+        SetServiceIdCommand();
         char* buildRequestMessage();
         void setServiceId(char* serviceId);
     private:
-    	char* message = "AT+UUID{ServiceId}";
-    	char* serviceId = "";
+    	char* serviceId;
 };
 
 #endif

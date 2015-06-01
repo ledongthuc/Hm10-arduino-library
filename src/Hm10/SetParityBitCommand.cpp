@@ -1,9 +1,12 @@
 #include "SetParityBitCommand.h"
 #include "Utility.h"
 
+SetParityBitCommand::SetParityBitCommand() {
+    this->message = "AT+PARI{ParityId}";
+}
+
 char* SetParityBitCommand::buildRequestMessage() {
-	this->message = str_replace(this->message, "{ParityId}", this->parityId);
-	return this->message;
+	return str_replace(this->message, "{ParityId}", this->parityId);
 }
 
 void SetParityBitCommand::setParityId(char* parityId) {

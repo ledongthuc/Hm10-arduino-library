@@ -5,11 +5,12 @@
 
 class SetAdvertisingDataCommand : public ICommand {
     public:
+        SetAdvertisingDataCommand();
         char* buildRequestMessage();
         void setAdvertisingFlag(char advertisingFlag);
+        char getAdvertisingFlag();
     private:
-    	char* message = "AT+FLAG";
-    	char advertisingFlag = 0;
+    	char advertisingFlag;
 };
 
 #endif

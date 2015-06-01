@@ -13,6 +13,7 @@ class Hm10Adapter {
         void send(char* requestData);
         void send(ICommand* command);
         char* getResponse();
+        int* getResponseInt();
         void start(int port);
     private:
         int txPin;

@@ -5,11 +5,11 @@
 
 class SetParityBitCommand : public ICommand {
     public:
+        SetParityBitCommand();
         char* buildRequestMessage();
         void setParityId(char* parityId);
     private:
-    	char* message = "AT+PARI{ParityId}";
-    	char* parityId = "";
+    	const char* parityId;
 };
 
 #endif

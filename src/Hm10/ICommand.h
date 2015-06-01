@@ -4,6 +4,8 @@
 class ICommand {
     public:
         virtual char* buildRequestMessage();
+    protected:
+        char* message;
 };
 
 #endif

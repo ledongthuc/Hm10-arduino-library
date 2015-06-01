@@ -11,7 +11,11 @@
 #include "SetAdvertisingDataCommand.h"
 
 
-Hm10::Hm10(int txPin, int rxPin) : Hm10(txPin, rxPin, SERIAL_PORT) {}
+Hm10::Hm10(int txPin, int rxPin) {
+    this->adapter = new Hm10Adapter(txPin, rxPin);
+    this->adapter->start(SERIAL_PORT);
+    delay(DELAY_AFTER_START_LISTENING);
+}
 
 Hm10::Hm10(int txPin, int rxPin, int serialPort) {
     this->adapter = new Hm10Adapter(txPin, rxPin);
@@ -95,14 +99,18 @@ char* Hm10::setAdvertisingDataFlag(char advertisingDataFlag) {
 	command->setAdvertisingFlag(advertisingDataFlag);
 	this->adapter->send(command);
     this->adapter->send(advertisingDataFlag);
-	delete command;
 	delay(DELAY_AFTER_SEND);
 	return adapter->getResponse();
-	//return command->buildRequestMessage();
 }
 
 char* Hm10::getResponse() {
-    return adapter->getResponse();
+    char* result = adapter->getResponse();
+    return result;
+}
+
+int* Hm10::getResponseInt() {
+    int* result = adapter->getResponseInt();
+    return result;
 }
 
 Hm10::~Hm10() {

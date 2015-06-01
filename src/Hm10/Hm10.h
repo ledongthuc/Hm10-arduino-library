@@ -22,6 +22,7 @@ class Hm10 {
         char* setServiceId(char* serviceId);
         char* setAdvertisingDataFlag(char advertisingDataFlag);
         char* getResponse();
+        int* getResponseInt();
 
     private:
     	Hm10Adapter* adapter;

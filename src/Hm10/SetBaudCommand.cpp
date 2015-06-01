@@ -1,10 +1,12 @@
 #include "SetBaudCommand.h"
 #include "Utility.h"
 
+SetBaudCommand::SetBaudCommand() {
+    this->message = "AT+BAUD{BaudId}";
+}
 
 char* SetBaudCommand::buildRequestMessage() {
-	this->message = str_replace(this->message, "{BaudId}", this->baudId);
-	return this->message;
+	return str_replace(this->message, "{BaudId}", this->baudId);
 }
 
 void SetBaudCommand::setBaudId(char* baudId) {
