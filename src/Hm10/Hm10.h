@@ -21,6 +21,7 @@ class Hm10 {
         char* renewFactorySetting();
         char* setServiceId(char* serviceId);
         char* setAdvertisingDataFlag(char advertisingDataFlag);
+        char* sendResetCommand();
         char* getResponse();
 
     private:

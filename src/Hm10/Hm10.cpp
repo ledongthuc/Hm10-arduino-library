@@ -9,6 +9,7 @@
 #include "RenewFactorySettingCommand.h"
 #include "SetServiceIdCommand.h"
 #include "SetAdvertisingDataCommand.h"
+#include "ResetCommand.h"
 
 
 Hm10::Hm10(int txPin, int rxPin) {
@@ -100,6 +101,15 @@ char* Hm10::setAdvertisingDataFlag(char advertisingDataFlag) {
 	this->adapter->send(command);
 	delay(DELAY_AFTER_SEND);
 	return this->getResponse();
+}
+
+char* Hm10::sendResetCommand() {
+	delay(DELAY_BEFORE_SEND);
+	ResetCommand* command = new ResetCommand();
+	this->adapter->send(command);
+    delete command;
+    delay(DELAY_AFTER_SEND);
+    return adapter->getResponse();
 }
 
 char* Hm10::getResponse() {
