@@ -2,12 +2,13 @@
 #include "Utility.h"
 
 SetAdvertisingDataCommand::SetAdvertisingDataCommand() {
-    this->message = "AT+FLAG";
+    this->message = "AT+FLAG{Data}";
     this->advertisingFlag = 0;
 }
 
 char* SetAdvertisingDataCommand::buildRequestMessage() {
-	return this->message;
+    char replacement[] = { this->advertisingFlag, 0 };
+    return str_replace(this->message, "{Data}", replacement);
 }
 
 char SetAdvertisingDataCommand::getAdvertisingFlag() {

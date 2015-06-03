@@ -3,7 +3,7 @@
 
 #include "CustomSoftwareSerial.h"
 #include "ICommand.h"
-#define BUFFER_LENGTH 1000
+#define BUFFER_LENGTH 100
 
 class Hm10Adapter {
     public:
@@ -13,7 +13,6 @@ class Hm10Adapter {
         void send(char* requestData);
         void send(ICommand* command);
         char* getResponse();
-        int* getResponseInt();
         void start(int port);
     private:
         int txPin;

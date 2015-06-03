@@ -98,19 +98,12 @@ char* Hm10::setAdvertisingDataFlag(char advertisingDataFlag) {
 	SetAdvertisingDataCommand* command = new SetAdvertisingDataCommand();
 	command->setAdvertisingFlag(advertisingDataFlag);
 	this->adapter->send(command);
-    this->adapter->send(advertisingDataFlag);
 	delay(DELAY_AFTER_SEND);
-	return adapter->getResponse();
+	return this->getResponse();
 }
 
 char* Hm10::getResponse() {
-    char* result = adapter->getResponse();
-    return result;
-}
-
-int* Hm10::getResponseInt() {
-    int* result = adapter->getResponseInt();
-    return result;
+    return adapter->getResponse();
 }
 
 Hm10::~Hm10() {

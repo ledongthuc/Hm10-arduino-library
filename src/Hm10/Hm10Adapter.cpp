@@ -28,26 +28,22 @@ char* Hm10Adapter::getResponse() {
     char receiveData[BUFFER_LENGTH];
     memset(receiveData, 0, BUFFER_LENGTH);
     int index=0;
-
+    int numberOfResponse=0;
     while(this->hm10Serial->available()) {
-        receiveData[index] = (char)this->hm10Serial->read();
-        index++;
-        if(index >= BUFFER_LENGTH) {
+        numberOfResponse++;
+        int responseByte = this->hm10Serial->read();
+        if(numberOfResponse == 1000) {
             break;
-    	}
-    }
-
-    return receiveData;
-}
-
-int* Hm10Adapter::getResponseInt() {
-    int receiveData[BUFFER_LENGTH];
-    memset(receiveData, 0, BUFFER_LENGTH);
-    int index=0;
-
-    while(this->hm10Serial->available()) {
-        receiveData[index] = this->hm10Serial->read();
+        }
+        if(responseByte <= 0 && index == 0) {
+            continue;
+        }
+        if(responseByte < 0 && index > 0) {
+            continue;
+        }
+        receiveData[index] = (char) responseByte;
         index++;
+
         if(index >= BUFFER_LENGTH) {
             break;
     	}
