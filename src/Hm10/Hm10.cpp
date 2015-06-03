@@ -10,6 +10,7 @@
 #include "SetServiceIdCommand.h"
 #include "SetAdvertisingDataCommand.h"
 #include "ResetCommand.h"
+#include "SetNotificationCommand.h"
 
 
 Hm10::Hm10(int txPin, int rxPin) {
@@ -110,6 +111,16 @@ char* Hm10::sendResetCommand() {
     delete command;
     delay(DELAY_AFTER_SEND);
     return adapter->getResponse();
+}
+
+char* Hm10::setNotificationInformation(char* notificationInformation) {
+    delay(DELAY_BEFORE_SEND);
+	SetNotificationCommand* command = new SetNotificationCommand();
+	command->setNotificationInformation(notificationInformation);
+	this->adapter->send(command);
+	delete command;
+	delay(DELAY_AFTER_SEND);
+	return adapter->getResponse();
 }
 
 char* Hm10::getResponse() {
